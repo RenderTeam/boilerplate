@@ -1,0 +1,31 @@
+extends layout
+
+block custom-stylesheets
+  link( rel='stylesheet', href='/stylesheets/own/login.css')
+
+block content
+  .container( ng-app = 'loginApp' )
+    .row
+      .col-sm-6.col-md-4.col-md-offset-4
+        .account-wall
+          img.profile-img( src='https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120', alt='')
+          form.form-signin( ng-controller = controller, name = 'formLogin' )
+            .form-group
+              input.form-control( rd-Validation, validationtype = 'text', 
+                ng-model = 'user.user', name = 'userName', 
+                placeholder = 'Usuario', type = 'text', autofocus = 'autofocus', 
+                required)
+            .form-group
+              input.form-control( rd-Validation, validationtype = 'text', 
+                ng-model = 'user.password', type = 'password'
+                placeholder = 'Contraseña', required )
+            .form-group
+              button.btn.btn-lg.btn-primary.btn-block( ng-click = 'login()' )
+                | Iniciar sesión
+              span.clearfix
+
+block custom-scripts
+  script( src='/javascripts/own/directives/validation.js')
+  script( src='/javascripts/own/services/usersServices.js')
+  script( src='/javascripts/own/controllers/loginController.js')
+  script( src='/javascripts/own/apps/loginApp.js')
